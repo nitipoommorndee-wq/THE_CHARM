@@ -4,867 +4,383 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ศูนย์ข้อมูลช่วยเหลือน้ำท่วมภาคใต้</title>
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
     }
 
     body {
       background: #f5f7fb;
       color: #1f2933;
-      line-height: 1.6;
+      line-height: 1.65;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ---------------- HEADER ---------------- */
 
     header {
       background: linear-gradient(135deg, #0f766e, #0369a1);
-      color: #fff;
-      padding: 18px 16px 18px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .header-top {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 6px;
+      color: white;
+      padding: 20px;
+      padding-top: 28px;
+      text-align: center;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
     }
 
     .logo-wrap {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
+      margin-bottom: 6px;
     }
 
     .logo-wrap img {
-      height: 42px;             /* <<< ปรับขนาดโลโก้ใหญ่ขึ้น */
-      width: auto;
-      display: block;
+      width: 140px; /* ปรับให้ใหญ่ขึ้น */
+      margin-bottom: 4px;
     }
 
-    .powered-by {
-      font-size: 0.7rem;
-      opacity: 0.9;
-      margin-top: 2px;
+    .logo-text {
+      font-size: 1rem;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-top: -8px;
+      letter-spacing: 0.5px;
     }
 
     header h1 {
-      font-size: 1.35rem;
-      margin-bottom: 2px;
-    }
-
-    header p {
-      font-size: 0.82rem;
-      opacity: 0.95;
+      font-size: 1.5rem;
+      margin-top: 6px;
+      margin-bottom: 6px;
     }
 
     .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
       margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .badge-live {
-      background: rgba(248, 250, 252, 0.16);
-      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 4px 12px;
       border-radius: 999px;
-      font-size: 0.75rem;
-      display: inline-flex;
+      font-size: 0.78rem;
+      display: flex;
       align-items: center;
       gap: 6px;
     }
 
     .dot-live {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
-      background: #f97316;
-      box-shadow: 0 0 0 6px rgba(248, 113, 22, 0.4);
+      background: #ff8a24;
+      box-shadow: 0 0 0 6px rgba(255, 145, 55, 0.45);
     }
 
     .last-updated {
-      font-size: 0.7rem;
-      opacity: 0.9;
-    }
-
-    .quick-actions {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border-radius: 999px;
       font-size: 0.75rem;
-      padding: 6px 12px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: #f97316;
-      color: #fff;
-    }
-
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.1);
-      color: #e5e7eb;
+      opacity: 0.9;
+      margin-top: 4px;
     }
 
     main {
-      max-width: 960px;
+      max-width: 950px;
       margin: 0 auto;
-      padding: 16px 12px 32px;
+      padding: 16px;
     }
 
-    /* NAV TAGS */
-
     .nav {
-      margin-bottom: 12px;
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
       font-size: 0.78rem;
+      margin-bottom: 14px;
     }
 
     .nav a {
       background: #e5e7eb;
       padding: 4px 10px;
       border-radius: 999px;
+      text-decoration: none;
+      color: #374151;
     }
 
-    .nav a:hover {
-      background: #cbd5e1;
-    }
-
-    section {
-      margin-top: 16px;
-    }
-
-    section h2 {
+    h2 {
       font-size: 1.1rem;
       margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    section small {
+    small {
       display: block;
+      margin-bottom: 6px;
       font-size: 0.7rem;
       color: #6b7280;
-      margin-bottom: 4px;
     }
 
     .section-card {
-      background: #ffffff;
+      background: white;
       border-radius: 12px;
-      padding: 12px;
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
-      margin-top: 6px;
+      padding: 14px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
     }
 
-    .alert-list,
-    .evac-list,
-    .route-list,
-    .point-list,
-    .contact-list {
-      display: grid;
-      gap: 10px;
+    .card {
+      border-radius: 10px;
+      background: #f9fafb;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 10px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
     }
 
     .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.68rem;
-      padding: 2px 8px;
+      padding: 3px 8px;
+      font-size: 0.7rem;
       border-radius: 999px;
-      background: #e5e7eb;
-      color: #374151;
     }
 
     .tag-danger {
       background: #fee2e2;
       color: #b91c1c;
     }
-
     .tag-warning {
-      background: #fef3c7;
+      background: #fff3c2;
       color: #92400e;
     }
-
     .tag-safe {
       background: #dcfce7;
       color: #166534;
     }
 
-    .card {
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
-      padding: 10px;
-      background: #f9fafb;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: flex-start;
-      margin-bottom: 4px;
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .card-meta {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-
-    .card-body {
-      font-size: 0.8rem;
-    }
-
-    .card-footer {
-      margin-top: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .card-footer a {
-      font-size: 0.75rem;
-      text-decoration: underline;
-    }
-
-    .pill {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .pill span {
-      font-size: 0.8em;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 0.82rem;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-    }
-
-    .contact-label {
-      font-weight: 600;
-    }
-
-    .contact-phone a,
-    .contact-link a {
-      text-decoration: underline;
-      font-size: 0.8rem;
-    }
-
-    .info-list {
-      font-size: 0.82rem;
-      padding-left: 1.2rem;
-    }
-
-    .info-list li {
-      margin-bottom: 4px;
-    }
-
     footer {
-      margin-top: 28px;
-      font-size: 0.7rem;
-      color: #9ca3af;
       text-align: center;
-    }
-
-    /* กล่องสำหรับ JSON API */
-    .json-box {
-      font-family: "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      background: #0b1220;
-      color: #e5e7eb;
-      padding: 8px 10px;
-      border-radius: 8px;
-      overflow-x: auto;
-      max-height: 220px;
-      border: 1px solid #1f2937;
-    }
-
-    .api-status {
-      font-size: 0.78rem;
-      margin-bottom: 4px;
-      color: #4b5563;
-    }
-
-    .api-status.ok {
-      color: #166534;
-    }
-
-    .api-status.error {
-      color: #b91c1c;
-    }
-
-    @media (min-width: 640px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-
-      .header-top {
-        gap: 16px;
-      }
-
-      .logo-wrap img {
-        height: 50px;
-      }
-
-      main {
-        padding: 20px 16px 40px;
-      }
-
-      .section-card {
-        padding: 14px;
-      }
-
-      .card {
-        padding: 12px;
-      }
-
-      .alert-list,
-      .evac-list,
-      .route-list,
-      .point-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      font-size: 0.75rem;
+      color: #777;
+      margin-top: 24px;
     }
   </style>
 </head>
+
 <body>
-<header>
-  <div class="header-top">
+  <!-- --------------------------------------------- -->
+  <!-- HEADER -->
+  <!-- --------------------------------------------- -->
+  <header>
     <div class="logo-wrap">
-      <!-- เปลี่ยนชื่อไฟล์โลโก้ให้ตรงกับไฟล์ของจริงในโฟลเดอร์ -->
-      <img src="CHRAM_V3_Yellow_PNG.png" alt="The Charm Robotics Logo" />
-      <div>
-        <div style="font-weight:600; font-size:0.8rem;">Powered by</div>
-        <div style="font-weight:700; font-size:0.9rem;">The Charm Robotics</div>
-      </div>
+      <img src="logo.png" alt="The Charm Robotics" />
+      <div class="logo-text">The Charm Robotics</div>
     </div>
-  </div>
 
-  <div>
     <h1>ศูนย์ข้อมูลช่วยเหลือน้ำท่วมภาคใต้</h1>
-    <p>รวมประกาศทางการ เส้นทางน้ำท่วม จุดรับบริจาค และช่องทางติดต่อขอความช่วยเหลือ</p>
-  </div>
+    <p style="font-size: 0.9rem; opacity: 0.9">
+      รวมประกาศทางการ สถานการณ์จริงล่าสุด เส้นทางน้ำท่วม และศูนย์ช่วยเหลือ
+    </p>
 
-  <div class="top-bar">
-    <div>
+    <div class="top-bar">
       <span class="badge-live">
         <span class="dot-live"></span>
         อัปเดตสถานการณ์
       </span>
-      <div class="last-updated" id="lastUpdated">
-        อัปเดตล่าสุด: กำลังโหลด...
-      </div>
     </div>
-    <div class="quick-actions">
-      <button class="btn btn-primary" id="btnScrollAlerts">ดูประกาศล่าสุด</button>
-      <button class="btn btn-ghost" id="btnShare">แชร์ลิงก์ด่วน</button>
-    </div>
-  </div>
-</header>
+    <div id="lastUpdated" class="last-updated">อัปเดตล่าสุด: กำลังโหลด...</div>
+  </header>
 
-<main>
-  <!-- เมนูเลื่อนภายในหน้า -->
-  <nav class="nav">
-    <a href="#alerts">ประกาศด่วน</a>
-    <a href="#evac">ประกาศอพยพ</a>
-    <a href="#routes">เส้นทางน้ำท่วม</a>
-    <a href="#points">จุดรับของ/แจกของ</a>
-    <a href="#contacts">ช่องทางช่วยเหลือ</a>
-    <a href="#tips">คำแนะนำเบื้องต้น</a>
-    <a href="#api-gistda">ข้อมูลจาก API หน่วยงานรัฐ</a>
-  </nav>
+  <!-- --------------------------------------------- -->
+  <!-- NAVIGATION -->
+  <!-- --------------------------------------------- -->
+  <main>
+    <nav class="nav">
+      <a href="#status">สถานการณ์ล่าสุด</a>
+      <a href="#alerts">ประกาศด่วน</a>
+      <a href="#evac">ประกาศอพยพ</a>
+      <a href="#routes">เส้นทางน้ำท่วม</a>
+      <a href="#points">จุดรับบริจาค</a>
+      <a href="#contacts">ช่องทางช่วยเหลือ</a>
+    </nav>
 
-  <!-- 🔹 ส่วนใหม่: ดึง API จริงจาก GISTDA -->
-  <section id="api-gistda">
-    <h2>🌐 ข้อมูลจาก API หน่วยงานรัฐ (GISTDA)</h2>
-    <small>ตัวอย่างการดึงข้อมูลน้ำท่วมซ้ำซาก (Flood Recurrence) จาก GISTDA ด้วย API Key ของคุณ</small>
+    <!-- --------------------------------------------- -->
+    <!-- สถานการณ์จริงล่าสุด (ข้อมูล ปภ. + อุตุฯ) -->
+    <!-- --------------------------------------------- -->
+    <section id="status">
+      <h2>🌧️ สถานการณ์น้ำท่วมภาคใต้ – ข้อมูลจริงล่าสุด</h2>
+      <small>ข้อมูล ปภ. และกรมอุตุนิยมวิทยา ณ วันที่ 24–25 พ.ย. 2568</small>
 
-    <div class="section-card">
-      <div class="api-status" id="apiStatusText">
-        กำลังดึงข้อมูลจาก GISTDA...
+      <div class="section-card">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <strong>ภาพรวมสถานการณ์จาก ปภ.</strong>
+              <div class="card-meta" style="font-size: 0.75rem; color: #666">
+                อัปเดต: 24 พ.ย. 2568 เวลา 06.00 น.
+              </div>
+            </div>
+            <span class="tag tag-danger">น้ำท่วมหลายจังหวัด</span>
+          </div>
+
+          <div style="font-size: 0.82rem; line-height: 1.7;">
+            ขณะนี้เกิดน้ำท่วมในพื้นที่ภาคใต้
+            <strong>จำนวน 10 จังหวัด</strong> รวม
+            <strong>92 อำเภอ 581 ตำบล 4,146 หมู่บ้าน</strong>
+            ประชาชนได้รับผลกระทบรวม
+            <strong>719,858 ครัวเรือน (1,917,521 คน)</strong><br /><br />
+
+            จังหวัดที่มีน้ำท่วมได้แก่:<br />
+            • สุราษฎร์ธานี – 14,334 ครัวเรือน<br />
+            • กระบี่ – 66 ครัวเรือน<br />
+            • นครศรีธรรมราช – 210,590 ครัวเรือน<br />
+            • ตรัง – 6,890 ครัวเรือน<br />
+            • พัทลุง – 130,980 ครัวเรือน<br />
+            • สตูล – 7,632 ครัวเรือน<br />
+            • สงขลา – 243,568 ครัวเรือน<br />
+            • ปัตตานี – 58,009 ครัวเรือน<br />
+            • ยะลา – 13,753 ครัวเรือน<br />
+            • นราธิวาส – 34,036 ครัวเรือน
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <strong>คำเตือนฝนตกหนัก – กรมอุตุฯ</strong>
+              <div class="card-meta" style="font-size: 0.75rem; color: #666">
+                ออกประกาศวันที่ 25 พ.ย. 2568
+              </div>
+            </div>
+            <span class="tag tag-warning">เฝ้าระวัง</span>
+          </div>
+
+          <div style="font-size: 0.82rem; line-height: 1.7;">
+            ภาคใต้ตอนล่างยังมี
+            <strong>ฝนตกหนักถึงหนักมาก</strong> ในหลายจังหวัด:<br />
+            <strong>นครศรีธรรมราช, พัทลุง, สงขลา, ปัตตานี, ยะลา,
+              นราธิวาส, ตรัง, สตูล</strong>
+            <br /><br />
+
+            อาจเกิด
+            <strong>น้ำท่วมฉับพลัน น้ำป่าไหลหลาก น้ำล้นตลิ่ง</strong>
+            โดยเฉพาะพื้นที่ใกล้เชิงเขาและลุ่มต่ำ<br /><br />
+
+            พื้นที่อ่าวไทยมีคลื่นสูง
+            <strong>2–3 เมตร</strong> เรือเล็กควรงดออกจากฝั่ง
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; align-items:center;">
-        <div class="pill">
-          พิกัดที่ใช้สอบถาม:
-          <span id="apiLatLon">8.43, 99.96 (ตัวอย่าง นครศรีฯ)</span>
-        </div>
-        <div class="pill">
-          สถานะการเรียก API:
-          <span id="apiStatusShort">กำลังโหลด...</span>
-        </div>
-      </div>
+    <!-- --------------------------------------------- -->
+    <!-- SECTION เดิมอื่น ๆ ได้วางไว้ล่างนี้ -->
+    <!-- --------------------------------------------- -->
 
-      <div class="card" style="margin-bottom:10px;">
-        <div class="card-header">
+    <section id="alerts">
+      <h2>🔴 ประกาศด่วน</h2>
+      <small>คัดลอกจากหน่วยงานจังหวัด อบต. ตำรวจทางหลวง</small>
+
+      <div class="section-card">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <strong>ประกาศเฝ้าระวังน้ำป่า – นครศรีธรรมราช</strong>
+              <div class="card-meta">25 พ.ย. 2568 เวลา 09:30 น.</div>
+            </div>
+            <span class="tag tag-danger">เตือนภัยสูง</span>
+          </div>
+
           <div>
-            <div class="card-title">ผลสรุปความเสี่ยงน้ำท่วมซ้ำซาก</div>
-            <div class="card-meta" id="apiSummaryMeta">
-              ข้อมูลจาก: GISTDA Disaster / Flood Recurrence API
-            </div>
-          </div>
-          <span class="tag tag-warning" id="apiRiskLevelTag">รอข้อมูล</span>
-        </div>
-        <div class="card-body" id="apiSummaryText">
-          ระบบกำลังดึงข้อมูลจาก API จริงของ GISTDA กรุณารอสักครู่...
-        </div>
-      </div>
-
-      <details>
-        <summary style="font-size:0.78rem; cursor:pointer; margin-bottom:6px;">
-          ดูข้อมูล JSON เต็มจาก API (สำหรับ Dev / ตรวจสอบโครงสร้างข้อมูล)
-        </summary>
-        <div class="json-box">
-          <pre id="apiRawJson">{}</pre>
-        </div>
-      </details>
-
-      <p style="font-size:0.72rem; color:#6b7280; margin-top:8px;">
-        หมายเหตุ: โค้ดนี้ใช้สำหรับสาธิตการเชื่อมต่อ API จริงของหน่วยงานรัฐ
-        ในเว็บ production ไม่ควรเปิดเผย API Key บน client ตรง ๆ
-        ควรให้ server ของคุณดึงข้อมูลแทนแล้วค่อยส่งต่อมาหน้านี้อีกที
-      </p>
-    </div>
-  </section>
-
-  <!-- ส่วนประกาศด่วน -->
-  <section id="alerts">
-    <h2>🔴 ประกาศด่วน / แจ้งเตือน</h2>
-    <small>คัดลอกจาก: ปภ. จังหวัด, จังหวัด, อบต., เทศบาล, ตำรวจทางหลวง ฯลฯ</small>
-
-    <div class="section-card">
-      <div class="alert-list">
-        <!-- ตัวอย่าง 1 -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">ประกาศเฝ้าระวังน้ำป่าไหลหลาก – อ.เมือง จ.นครศรีธรรมราช</div>
-              <div class="card-meta">ออกประกาศ: 25 พ.ย. 2568 เวลา 09:30 น. • แหล่งที่มา: ปภ.จังหวัด</div>
-            </div>
-            <span class="tag tag-danger">ระดับ: เตือนภัยสูง</span>
-          </div>
-          <div class="card-body">
-            ขอให้ประชาชนในพื้นที่ลุ่มต่ำริมน้ำเตรียมพร้อมอพยพ และติดตามประกาศจากจังหวัดอย่างใกล้ชิด
-          </div>
-          <div class="card-footer">
-            <span class="pill">
-              พื้นที่: <span>นครศรีธรรมราช</span>
-            </span>
-            <a href="#" target="_blank" rel="noopener">ดูประกาศต้นฉบับ</a>
-          </div>
-        </article>
-
-        <!-- ตัวอย่าง 2 -->
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">แจ้งปิดสะพานชั่วคราว – เส้นทางสายหลักเข้าตัวเมืองสุราษฎร์ฯ</div>
-              <div class="card-meta">ออกประกาศ: 25 พ.ย. 2568 เวลา 08:15 น. • แหล่งที่มา: ตำรวจทางหลวง</div>
-            </div>
-            <span class="tag tag-warning">ระดับ: ระวังเส้นทาง</span>
-          </div>
-          <div class="card-body">
-            น้ำท่วมสูงบริเวณสะพานหลัก โปรดหลีกเลี่ยงและใช้เส้นทางเลี่ยงเมืองตามที่แนะนำในส่วน “เส้นทางน้ำท่วม / เส้นทางปลอดภัย”
-          </div>
-          <div class="card-footer">
-            <span class="pill">
-              พื้นที่: <span>สุราษฎร์ธานี</span>
-            </span>
-            <a href="#" target="_blank" rel="noopener">ดูแผนที่ประกอบ</a>
+            ขอให้ประชาชนในพื้นที่ลุ่มต่ำเตรียมอพยพและติดตามประกาศใกล้ชิด
           </div>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ส่วนอื่น ๆ (ใช้ของเดิมได้เลย) -->
+    <section id="evac">
+      <h2>📢 ประกาศอพยพ</h2>
+      <small>ประกาศจากนายอำเภอ ปภ. จังหวัด</small>
 
-  <section id="evac">
-    <h2>📢 ประกาศอพยพ</h2>
-    <small>ให้ลงเฉพาะที่มาจากหน่วยงานทางการ เช่น ผู้ว่าราชการจังหวัด, นายอำเภอ, ปภ., อบต.</small>
-
-    <div class="section-card">
-      <div class="evac-list">
+      <div class="section-card">
         <article class="card">
           <div class="card-header">
             <div>
-              <div class="card-title">คำสั่งอพยพชั่วคราว – ต.บางจาก อ.เมือง จ.นครศรีธรรมราช</div>
-              <div class="card-meta">ประกาศโดย: นายอำเภอเมือง • มีผลตั้งแต่: 25 พ.ย. 2568 10:00 น.</div>
+              <strong>อพยพชั่วคราว – ต.บางจาก</strong>
+              <div class="card-meta">25 พ.ย. 2568 เวลา 10:00 น.</div>
             </div>
             <span class="tag tag-danger">อพยพทันที</span>
           </div>
-          <div class="card-body">
-            ให้ประชาชนในพื้นที่ลุ่มต่ำเคลื่อนย้ายไปยังศูนย์พักพิงชั่วคราวที่โรงเรียนบางจากวิทยา พร้อมเอกสารสำคัญและยาประจำตัว
-          </div>
-          <div class="card-footer">
-            <span class="pill">
-              ศูนย์พักพิง: <span>โรงเรียนบางจากวิทยา</span>
-            </span>
-            <a href="#" target="_blank" rel="noopener">ดูคำสั่งฉบับเต็ม</a>
-          </div>
+
+          ให้ประชาชนเคลื่อนย้ายไปยังศูนย์พักพิงโรงเรียนบางจากวิทยา
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="routes">
-    <h2>🗺️ เส้นทางน้ำท่วม / เส้นทางปลอดภัย</h2>
-    <small>ข้อมูลจาก ตำรวจทางหลวง, แขวงการทาง, กลุ่มอาสาจราจร ที่อ้างอิงแหล่งที่มาได้</small>
+    <section id="routes">
+      <h2>🗺️ เส้นทางน้ำท่วม</h2>
 
-    <div class="section-card">
-      <div class="route-list">
+      <div class="section-card">
         <article class="card">
           <div class="card-header">
-            <div>
-              <div class="card-title">สายเอเชีย ช่วง กม.120–130 น้ำท่วมขัง</div>
-              <div class="card-meta">อัปเดต: 25 พ.ย. 2568 เวลา 07:45 น. • ที่มา: ตำรวจทางหลวง</div>
-            </div>
-            <span class="tag tag-warning">เลี่ยงเส้นทาง</span>
+            <div><strong>ถนนสายเอเชีย</strong></div>
+            <span class="tag tag-warning">หลีกเลี่ยง</span>
           </div>
-          <div class="card-body">
-            รถเล็กโปรดหลีกเลี่ยง แนะนำใช้เส้นทางเลี่ยงเมืองผ่าน อ.ท่าศาลา ตามป้ายทางการ หรือดูแผนที่จากลิงก์ด้านล่าง
-          </div>
-          <div class="card-footer">
-            <a href="#" target="_blank" rel="noopener">ดูแผนที่ Google Maps</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">เส้นทางปลอดภัยสำหรับรถเล็กเข้าสู่ตัวเมือง</div>
-              <div class="card-meta">อัปเดต: 25 พ.ย. 2568 เวลา 07:50 น. • ที่มา: แขวงการทาง</div>
-            </div>
-            <span class="tag tag-safe">ใช้การได้</span>
-          </div>
-          <div class="card-body">
-            แนะนำใช้เส้นทางสายรองเลียบคลอง ***** ตามป้ายแนะนำทางการ โปรดขับรถด้วยความระมัดระวัง
-          </div>
-          <div class="card-footer">
-            <a href="#" target="_blank" rel="noopener">เปิดเส้นทางในแผนที่</a>
-          </div>
+          กม.120–130 มีน้ำท่วมขัง รถเล็กผ่านไม่ได้
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="points">
-    <h2>🎒 จุดรับบริจาค / จุดแจกของ</h2>
-    <small>ระบุชัดเจนว่าจุดไหน “รับของ” จุดไหน “แจกของ” พร้อมวัน–เวลาเปิด</small>
+    <section id="points">
+      <h2>🎒 จุดรับบริจาค</h2>
 
-    <div class="section-card">
-      <div class="point-list">
+      <div class="section-card">
         <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">ศูนย์รับบริจาค – ศาลากลางจังหวัดนครศรีธรรมราช</div>
-              <div class="card-meta">เปิด: 08:00–20:00 น. • ติดต่อ: 0-75xxx-xxx</div>
-            </div>
-            <span class="tag tag-safe">รับของบริจาค</span>
-          </div>
-          <div class="card-body">
-            รับ: น้ำดื่ม อาหารแห้ง ยา ผ้าอนามัย ผ้าอ้อมเด็ก–ผู้ใหญ่ ไฟฉาย ถ่านไฟฉาย (งดรับเสื้อผ้าที่ชำรุด)
-          </div>
-          <div class="card-footer">
-            <a href="#" target="_blank" rel="noopener">ปักหมุดศูนย์รับบริจาค</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">จุดแจกอาหารปรุงสุก – วัดตัวอย่าง</div>
-              <div class="card-meta">รอบแจก: 11:30 น. และ 17:30 น. • แจกให้ผู้ประสบภัยในรัศมี 5 กม.</div>
-            </div>
-            <span class="tag tag-warning">จุดแจกของ</span>
-          </div>
-          <div class="card-body">
-            กรุณานำภาชนะใส่อาหารส่วนตัวมาด้วย หากมีข้อสงสัยติดต่ออาสาสมัครที่เบอร์ในหัวข้อ “ช่องทางช่วยเหลือ”
-          </div>
+          <strong>ศูนย์รับบริจาค – ศาลากลางนครศรีธรรมราช</strong><br />
+          เปิด 08:00–20:00 น.
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contacts">
-    <h2>☎️ ช่องทางติดต่อ / ขอความช่วยเหลือ</h2>
-    <small>เน้นเบอร์ฉุกเฉินและช่องทางทางการเท่านั้น</small>
+    <section id="contacts">
+      <h2>☎️ ช่องทางช่วยเหลือ</h2>
 
-    <div class="section-card">
-      <div class="contact-list">
-        <div class="contact-item">
-          <div class="contact-label">สายด่วน ปภ. (กรมป้องกันและบรรเทาสาธารณภัย)</div>
-          <div class="contact-phone">
-            โทร: <a href="tel:1784">1784</a> (ตลอด 24 ชม.)
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-label">ศูนย์ประสานงานน้ำท่วมจังหวัด (ตัวอย่าง)</div>
-          <div class="contact-phone">
-            โทร: <a href="tel:0xxxxxxxxx">0-xxxxxxxxx</a>
-          </div>
-          <div class="contact-link">
-            เพจเฟซบุ๊ก: <a href="#" target="_blank" rel="noopener">กดเพื่อเปิดเพจ</a>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-label">ตำรวจทางหลวง</div>
-          <div class="contact-phone">
-            โทร: <a href="tel:1193">1193</a> – สอบถามสภาพเส้นทาง
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-label">แจ้งเหตุฉุกเฉินอื่น ๆ</div>
-          <div class="contact-phone">
-            เหตุฉุกเฉินทั่วไป: <a href="tel:191">191</a> • กู้ชีพฉุกเฉิน: <a href="tel:1669">1669</a>
-          </div>
-        </div>
+      <div class="section-card">
+        <article class="card">
+          <strong>สายด่วน ปภ.</strong><br />
+          โทร 1784 (24 ชม.)
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="tips">
-    <h2>ℹ️ คำแนะนำเบื้องต้นเมื่อเกิดน้ำท่วม</h2>
-    <small>นำมาจากประกาศ/คำแนะนำของหน่วยงานทางการเท่านั้น</small>
+    <footer>
+      จัดทำโดย The Charm Robotics – เพื่อช่วยเหลือและเผยแพร่ข้อมูลจากทางการ
+    </footer>
+  </main>
 
-    <div class="section-card">
-      <ul class="info-list">
-        <li>ติดตามประกาศจากจังหวัด, ปภ., อบต., เทศบาล อย่างสม่ำเสมอ อย่าแชร์ข้อความที่ไม่ทราบแหล่งที่มา</li>
-        <li>เตรียมเอกสารสำคัญ ยาประจำตัว โทรศัพท์ และแบตสำรอง ไว้ใกล้ตัวเสมอ</li>
-        <li>หากมีคำสั่งอพยพ ให้ปฏิบัติตามทันที ไม่อยู่ในพื้นที่เสี่ยงเพื่อเก็บทรัพย์สิน</li>
-        <li>หลีกเลี่ยงการเดินลุยน้ำหรือขับรถผ่านน้ำเชี่ยว หากไม่จำเป็น</li>
-        <li>ดูแลเด็ก ผู้สูงอายุ และสัตว์เลี้ยงให้ปลอดภัย หลีกเลี่ยงปล่อยไว้ลำพัง</li>
-      </ul>
-    </div>
-  </section>
-
-  <footer>
-    เว็บไซต์นี้จัดทำเพื่อช่วยรวบรวมข้อมูลจากแหล่งทางการเท่านั้น
-    ก่อนแชร์กรุณาตรวจสอบวันที่และแหล่งที่มาของข้อมูลทุกครั้ง
-  </footer>
-</main>
-
-<script>
-  // แสดงเวลาอัปเดตล่าสุด (ใช้เวลาจากเครื่องผู้ใช้)
-  (function () {
-    const lastUpdatedEl = document.getElementById("lastUpdated");
-    const now = new Date();
-    const optionsDate = { year: "numeric", month: "short", day: "numeric" };
-    const optionsTime = { hour: "2-digit", minute: "2-digit" };
-    const dateStr = now.toLocaleDateString("th-TH", optionsDate);
-    const timeStr = now.toLocaleTimeString("th-TH", optionsTime);
-    lastUpdatedEl.textContent =
-      "อัปเดตล่าสุด: " + dateStr + " เวลา " + timeStr + " น.";
-  })();
-
-  // ปุ่มเลื่อนไปยังส่วนประกาศล่าสุด
-  document.getElementById("btnScrollAlerts").addEventListener("click", function () {
-    const alertsSection = document.getElementById("alerts");
-    alertsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  // ปุ่มแชร์ลิงก์ (Web Share API ถ้ามี / ถ้าไม่มีก็ copy link)
-  document.getElementById("btnShare").addEventListener("click", async function () {
-    const shareData = {
-      title: "ศูนย์ข้อมูลช่วยเหลือน้ำท่วมภาคใต้",
-      text: "รวมประกาศทางการ เส้นทางน้ำท่วม จุดรับบริจาค และช่องทางติดต่อขอความช่วยเหลือ",
-      url: window.location.href,
-    };
-
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.log("ยกเลิกการแชร์", err);
-      }
-    } else if (navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("คัดลอกลิงก์เว็บไซต์ไปยังคลิปบอร์ดแล้ว");
-      } catch (err) {
-        alert(
-          "ไม่สามารถแชร์อัตโนมัติได้ กรุณาคัดลอกลิงก์จากช่อง URL เอง"
-        );
-      }
-    } else {
-      alert("เบราว์เซอร์ไม่รองรับการแชร์อัตโนมัติ กรุณาคัดลอกลิงก์เองครับ");
-    }
-  });
-
-  // ------------- ดึง API จริงจาก GISTDA (Flood Recurrence) -------------
-
-  // TODO: ใส่ API KEY จริงที่ได้จาก GISTDA แทนข้อความนี้
-  const GISTDA_API_KEY = "YOUR_API_KEY_HERE";
-
-  // พิกัดตัวอย่าง – เมืองนครศรีธรรมราช (ปรับเองได้)
-  const SAMPLE_LAT = 8.43;
-  const SAMPLE_LON = 99.96;
-
-  document.getElementById("apiLatLon").textContent =
-    SAMPLE_LAT.toFixed(2) + ", " + SAMPLE_LON.toFixed(2) + " (ตัวอย่าง นครศรีฯ)";
-
-  async function loadGistdaFloodRecurrence() {
-    const statusText = document.getElementById("apiStatusText");
-    const statusShort = document.getElementById("apiStatusShort");
-    const rawJsonEl = document.getElementById("apiRawJson");
-    const summaryTextEl = document.getElementById("apiSummaryText");
-    const summaryMetaEl = document.getElementById("apiSummaryMeta");
-    const riskTagEl = document.getElementById("apiRiskLevelTag");
-
-    // ถ้ายังไม่ได้ใส่ API KEY ให้แจ้งเตือนเลย
-    if (!GISTDA_API_KEY || GISTDA_API_KEY === "YOUR_API_KEY_HERE") {
-      statusText.classList.add("error");
-      statusText.textContent =
-        "ยังไม่ได้ตั้งค่า GISTDA_API_KEY ในไฟล์ HTML – กรุณาสมัครและใส่ API Key ก่อน (ดูคอมเมนต์ในโค้ด)";
-      statusShort.textContent = "ยังไม่ได้ตั้งค่า API Key";
-      summaryTextEl.textContent =
-        "เพื่อใช้งานจริง ให้สมัครใช้งาน GISTDA API Gateway แล้วนำ API Key มาใส่ในตัวแปร GISTDA_API_KEY.";
-      riskTagEl.textContent = "รอตั้งค่า API Key";
-      return;
-    }
-
-    const API_URL =
-      "https://api-gateway.gistda.or.th/api/2.0/resources/gi-service/v1.0/disasters/flood-recurrence";
-
-    const url =
-      API_URL +
-      "?lat=" +
-      encodeURIComponent(SAMPLE_LAT) +
-      "&lon=" +
-      encodeURIComponent(SAMPLE_LON) +
-      "&api_key=" +
-      encodeURIComponent(GISTDA_API_KEY);
-
-    statusText.textContent = "กำลังดึงข้อมูลจาก GISTDA...";
-    statusShort.textContent = "กำลังโหลด...";
-
-    try {
-      const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error("HTTP " + res.status + " " + res.statusText);
-      }
-
-      const data = await res.json();
-
-      // แสดง JSON ทั้งก้อนให้ dev ดูก่อน (ไม่รู้โครงสร้างแน่ชัด)
-      rawJsonEl.textContent = JSON.stringify(data, null, 2);
-
-      statusText.classList.remove("error");
-      statusText.classList.add("ok");
-      statusText.textContent = "ดึงข้อมูลจาก GISTDA สำเร็จ (Flood Recurrence API)";
-      statusShort.textContent = "เรียก API สำเร็จ";
-
-      // พยายามดึง field ที่น่าจะสำคัญ (เผื่อเป็นรูปแบบ Feature / properties)
-      let riskText = "ยังไม่ทราบระดับความเสี่ยงจากโครงสร้างข้อมูล";
-      let riskLevel = "";
-      let yearInfo = "";
-
-      try {
-        // ตัวอย่างการเดาโครงสร้าง (ต้องดูจาก JSON จริงเพื่อปรับภายหลัง)
-        if (data && data.features && data.features.length > 0) {
-          const props = data.features[0].properties || {};
-          riskLevel = props.risk_level || props.level || "";
-          const freq = props.recurrence || props.frequency || "";
-          yearInfo = props.year || props.years || "";
-
-          riskText =
-            "จุดพิกัดนี้มีความถี่การเกิดน้ำท่วมซ้ำซากประมาณ: " +
-            (freq || "ไม่ระบุ") +
-            " (ระดับความเสี่ยง: " +
-            (riskLevel || "ไม่ระบุ") +
-            ")" +
-            (yearInfo ? " • ข้อมูลปี: " + yearInfo : "");
-        }
-      } catch (e) {
-        console.warn("อ่านโครงสร้างข้อมูลไม่ได้:", e);
-      }
-
-      summaryTextEl.textContent = riskText;
-      summaryMetaEl.textContent =
-        "ข้อมูลจาก: GISTDA Flood Recurrence API (lat=" +
-        SAMPLE_LAT +
-        ", lon=" +
-        SAMPLE_LON +
-        ")";
-
-      riskTagEl.textContent = riskLevel || "ดูรายละเอียดใน JSON";
-      if (riskLevel) {
-        riskTagEl.classList.remove("tag-warning", "tag-safe", "tag-danger");
-        const rl = String(riskLevel).toLowerCase();
-        if (rl.includes("สูง") || rl.includes("high")) {
-          riskTagEl.classList.add("tag-danger");
-        } else if (rl.includes("ต่ำ") || rl.includes("low")) {
-          riskTagEl.classList.add("tag-safe");
-        } else {
-          riskTagEl.classList.add("tag-warning");
-        }
-      }
-    } catch (err) {
-      console.error(err);
-      statusText.classList.add("error");
-      statusText.textContent =
-        "เรียก API ไม่สำเร็จ: " +
-        err.message +
-        " (อาจติด CORS หรือ API Key ไม่ถูกต้อง)";
-      statusShort.textContent = "เกิดข้อผิดพลาด";
-      summaryTextEl.textContent =
-        "ไม่สามารถดึงข้อมูลจาก GISTDA ได้ในตอนนี้ อาจเกิดจาก API Key ไม่ถูกต้อง, หมดอายุ หรือเซิร์ฟเวอร์ไม่อนุญาตให้เรียกจาก GitHub Pages / เว็บไซต์นี้โดยตรง (ปัญหา CORS). แนะนำให้ลองเรียก API ผ่าน server ของคุณเองแล้วส่งข้อมูลมาให้หน้านี้แทน.";
-    }
-  }
-
-  // เรียก API ตอนโหลดหน้า
-  loadGistdaFloodRecurrence();
-</script>
+  <script>
+    // อัปเดตเวลาล่าสุดอัตโนมัติ
+    (function () {
+      const el = document.getElementById("lastUpdated");
+      const now = new Date();
+      el.textContent =
+        "อัปเดตล่าสุด: " +
+        now.toLocaleDateString("th-TH") +
+        " เวลา " +
+        now.toLocaleTimeString("th-TH", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }) +
+        " น.";
+    })();
+  </script>
 </body>
 </html>
+
 
